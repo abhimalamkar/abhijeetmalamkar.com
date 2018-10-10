@@ -54,11 +54,15 @@ app.use("/api/stories", stories);
 app.use("/api/utils", utils);
 app.use("/uploads", express.static("uploads"));
 
-app.use( express.static( `${__dirname}/../../app/build` ) );
+// app.use( express.static( `${__dirname}/../../app/build` ) );
 
-app.get('*', (req, res)=>{
-  res.sendFile(path.join(__dirname, '/../../app/build/index.html'));
-})
+// app.get('*', (req, res)=>{
+//   res.sendFile(path.join(__dirname, '/../../app/build/index.html'));
+// })
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 
 // app.listen(8080, () => console.log("Running on localhost:8080"));
 
