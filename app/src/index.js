@@ -1,41 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { BrowserRouter, Route } from "react-router-dom";
-import decode from "jwt-decode";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-import registerServiceWorker from "./registerServiceWorker";
-import "semantic-ui-css/semantic.min.css";
+ReactDOM.render(<App />, document.getElementById('root'));
 
-import "./style/stylesheet.css";
-
-import App from "./App";
-
-import { userLoggedIn } from "./redux/actions/auth";
-import setAuthorizationHeader from "./utils/setAuthorizationHeader";
-import { store } from './redux/store';
-
-if (localStorage.appJWT) {
-  const payload = decode(localStorage.appJWT);
-  const user = {
-    token: localStorage.appJWT,
-    email: payload.email,
-    confirmed: payload.confirmed,
-    profile_pic: payload.profile_pic,
-    name: payload.name
-  };
-
-  setAuthorizationHeader(localStorage.appJWT)
-  store.dispatch(userLoggedIn(user));
-}
-
-ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <Route component={App} />
-    </Provider>
-  </BrowserRouter>,
-  document.getElementById("root")
-);
-
-registerServiceWorker();
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+serviceWorker.unregister();
