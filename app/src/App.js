@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-import ThreeScene from "./components/ThreeScene";
+import Header from './components/header/Header'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <ThreeScene />
-        <header className="App-header">
+        <Header />
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>Abhijeet Malamkar</p>
           <a
@@ -20,7 +20,7 @@ class App extends Component {
           >
             Github
           </a>
-        </header>
+        </header> */}
       </div>
     );
   }
