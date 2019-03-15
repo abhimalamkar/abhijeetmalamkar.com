@@ -1,7 +1,20 @@
 import * as THREE from 'three'
-import alphaTexture from '../../../assets/textures/stripes_gradient.jpg';
+import alphaTexture from '../../../assets/textures/original.png';
 
 export default scene => {    
+
+    var loader = new THREE.ObjectLoader();
+
+    loader.load( 'path/to/model.glb', function ( gltf ) {
+    
+        scene.add( gltf.scene );
+    
+    }, undefined, function ( error ) {
+    
+        console.error( error );
+    
+    } );
+
     const group = new THREE.Group();
 
     const subjectGeometry = deformGeometry(new THREE.IcosahedronGeometry(10, 2));
@@ -38,7 +51,7 @@ export default scene => {
     }
 
     function update(time) {
-        const angle = time*speed;
+        const angle = time*speed ;
 
         group.rotation.y = angle;
 
